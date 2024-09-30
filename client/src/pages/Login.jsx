@@ -15,7 +15,7 @@ function Login(){
             <input type="text" placeholder="Enter your Username" style={{margin:"2%"}}></input><br></br>
             <input type="text" placeholder="Enter your Password" style={{margin:"2%"}}></input><br></br>
 
-            <button style={{margin:"2%"}}>Login</button>
+            <button style={{margin:"2%", backgroundColor:"#a3c8e6"}}>Login</button>
         </div>
     )
 }

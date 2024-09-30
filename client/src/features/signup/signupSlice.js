@@ -45,10 +45,16 @@ extraReducers: (builder) => {
         state.loading = false;
         state.error = action.error.message;
     })
-}}
+}
+}
 
-export const checkUsersExists = 
 )
+
+export const checkUserExists = createAsyncThunk("signup/checkUserExists", async (username) => {
+    const response = await fetch("http://localhost:3000/users")
+    const users = await response.json()
+    return users.some(user => user.username === user)
+})
 
 export const { resetSignUp } = signupSlice.actions
 export default signupSlice.reducer

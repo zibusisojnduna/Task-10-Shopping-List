@@ -7,29 +7,30 @@ function Nav(){
 
             
         <li style={{display:"block", color:"black", textAlign:"center", padding:"2%", textDecoration:"none", float:"left"}}>
-            <Link to={"/"}>Home</Link>
+            <Link to={"/"} style={{color:"black"}}>Home</Link>
         </li>
 
         <li style={{display:"block", color:"black", textAlign:"center", padding:"2%", textDecoration:"none", float:"left"}}>
-            <Link to={"/shoppinglist"}>Shopping List</Link>
+            <Link to={"/shoppinglist"}style={{color:"black"}}>Shopping List</Link>
         </li>
 
         <li style={{display:"block", color:"black", textAlign:"center", padding:"2%", textDecoration:"none", float:"left"}}>
-            <Link to={"/privacy"}>Privacy</Link>
+            <Link to={"/privacy"} style={{color:"black"}}>Privacy</Link>
         </li>
 
         <li style={{display:"block", color:"black", textAlign:"center", padding:"2%", textDecoration:"none", float:"left"}}>
-            <Link to={"/NoPage"}>No Page</Link>
+            <Link to={"/NoPage"} style={{color:"black"}} >No Page</Link>
         </li>
 
         <li style={{display:"block", color:"black", textAlign:"center", padding:"2%", textDecoration:"none", float:"left"}}>
-            <Link to={"/login"}>Login</Link>
-
-            <li style={{display:"block", color:"black", textAlign:"center", padding:"2%", textDecoration:"none", float:"left"}}>
-            <Link to={"/signup"}>Sign Up</Link>
+            <Link to={"/login"} style={{color:"black"}}>Login</Link>
         </li>
 
+        <li style={{display:"block", color:"black", textAlign:"center", padding:"2%", textDecoration:"none", float:"left"}}>
+            <Link to={"/signup"} style={{color:"black"}}>Sign Up</Link>
         </li>
+
+        
     </ul>
     )
 }

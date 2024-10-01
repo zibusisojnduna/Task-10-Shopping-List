@@ -4,7 +4,7 @@ function Decrement(props){
     }
 
     return(
-        <button onClick={decrement}>-</button>
+        <button onClick={decrement} style={{backgroundColor:"#a8bfe6", margin:"1%"}}>-</button>
     )
 }
 export default Decrement

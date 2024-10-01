@@ -11,7 +11,7 @@ function Landing(){
                 <button style={{backgroundColor:"#99dae7"}}><Link to={"/login"} style={{color:"black"}}>Login</Link></button>
             </div>
 
-            <div style={{background:`url(${require("../assets/List.png")})`}}>
+            <div style={{backgroundImage:`url(${require("../assets/List.png")})`}}>
               
             </div>
         </section>

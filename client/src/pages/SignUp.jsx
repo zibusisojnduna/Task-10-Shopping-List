@@ -1,22 +1,34 @@
-import { Link } from "react-router-dom"
+import { useHistory} from "react-router-dom"
 import { useDispatch, useSelector} from "react-redux"
-import { signup, resetSignUp } from "../features/signup/signupSlice"
+import { signup } from "../features/actions/actions"
 import { useState } from "react"
 
 function SignUp(){
     const dispatch = useDispatch()
-    const { loading, error, user } = useSelector((state) => state.signup)
-    const [formData, setFormData] = useState({ name:"", email:"", username:"", password:"", confirmPassword:"",})
-
-    const handleChange = (e) => {
-        const {name, value} = e.target;
-        setFormData((prev) => ({...prev, [name]:value}))
-    }
-
+    const history = useHistory()
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
+    const [passwordError, setPasswordError] = useState("")
+ 
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(signup(formData))
+   
+
+        if (password !== confirmPassword){
+            setPasswordError("Passwords do not match.")
+            return
+        }
+        
+        dispatch(signup(username, password))
+        .then(() => {
+            if(!error){
+                history.push("/login")
+            }
+        })
     }
+
+    
 
 
     return(
@@ -25,17 +37,14 @@ function SignUp(){
             <p>Please enter the follwing fields</p>
 
             <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Enter your name" value={formData.name} onChange={handleChange} required style={{margin:"2%", borderRadius:"15px"}}></input><br></br>
+           
+            <input type="text" placeholder="Choose your username" value={username} onChange={(e) => setUsername(e.target.value)} required style={{margin:"2%", borderRadius:"15px"}}></input><br></br>
 
-            <input type="text" placeholder="Enter your email address" value={formData.email} onChange={handleChange} required style={{margin:"2%", borderRadius:"15px"}}></input><br></br> 
+            <input type="password" placeholder="Enter your password"  value={password} onChange={(e) => setPassword(e.target.value)} required style={{margin:"2%", borderRadius:"15px"}}></input><br></br>
 
-            <input type="text" placeholder="Enter your username" value={formData.username} onChange={handleChange} required style={{margin:"2%", borderRadius:"15px"}}></input><br></br>
+            <input type="password" placeholder="Confirm your password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required style={{margin:"2%", borderRadius:"15px"}}></input><br></br>
 
-            <input type="text" placeholder="Enter your password"  value={formData.password} onChange={handleChange} required style={{margin:"2%", borderRadius:"15px"}}></input><br></br>
-
-            <input type="text" placeholder="Confirm your password" value={formData.confirmPassword} onChange={handleChange} required style={{margin:"2%", borderRadius:"15px"}}></input><br></br>
-
-            <button  disabled={loading} style={{backgroundColor:"#a3c8e6"}}><Link to={"/shoppinglist"} style={{color:"black"}}>Sign Up</Link></button> 
+            <button style={{backgroundColor:"#a3c8e6"}}><Link to={"/shoppinglist"} style={{color:"black"}}>Sign Up</Link></button> 
             </form>
             
         </div>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 function Nav(){
     return(
         
-        <ul style={{listStyleType:"none", margin:"0", padding:"0", overflow:"hidden", backgroundColor:"#a8bfe6"}}>
+        <ul style={{listStyleType:"none", margin:"0", padding:"0", overflow:"hidden", backgroundColor:"#a8bfe6", width:"100%"}}>
 
             
         <li style={{display:"block", color:"black", textAlign:"center", padding:"2%", textDecoration:"none", float:"left"}}>

@@ -1,6 +1,8 @@
 function NoPage(){
     return(
-        <h1>This is the no page</h1>
+        <div style={{backgroundImage:`url(${require("../assets/images.png")})`, height:"100%", width:"100%"}}>
+            
+        </div>
     )
 }
 export default NoPage

@@ -1,20 +1,14 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { signup } from "../features/signup/signupSlice"
+import { signup, resetState } from "../features/signup/signupSlice" 
+import { useNavigate } from "react-router-dom"
+
 
 function SignUp(){
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
     const dispatch = useDispatch()
-    const error =  useSelector((state) => state.auth.error)
-    const [userData, setUserData] = useState({username: "", password: ""})
-   
-    const handleChange = (e) => {
-        setUserData({...userData, [e.target.name]:e.target.value})
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        dispatch(signup(userData))
-    }
+    const navigate = useNavigate()
     return(
         <div>
             <form onSubmit={handleSubmit}>

@@ -1,4 +1,5 @@
 // src/slices/loginSlice.js
+// src/slices/loginSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -8,14 +9,18 @@ const initialState = {
   error: null,
 };
 
-export const login = createAsyncThunk('login/fetchLogin', async ({ username, password }) => {
+export const login = createAsyncThunk('login/loginUser', async (credentials) => {
   const response = await axios.get('http://localhost:3000/users', {
-    params: { username, password }
+    params: {
+      username: credentials.username,
+      password: credentials.password,
+    },
   });
-  if (response.data.length === 0) {
+  if (response.data.length > 0) {
+    return response.data[0]; // Return the user object
+  } else {
     throw new Error('Invalid credentials');
   }
-  return response.data[0]; // Return user data
 });
 
 const loginSlice = createSlice({
@@ -44,5 +49,4 @@ const loginSlice = createSlice({
 });
 
 export const { logout } = loginSlice.actions;
-
 export default loginSlice.reducer;

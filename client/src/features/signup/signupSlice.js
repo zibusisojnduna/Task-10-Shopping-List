@@ -1,26 +1,35 @@
-import { SIGNUP_SUCCESS, SIGNUP_FAILURE } from "../actions/actions";
+
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 const initialState = {
-    user: null,
-    error: null,
-  };
-  
-  const authReducer = (state = initialState, action) => {
-    switch (action.type) {
-      case SIGNUP_SUCCESS:
-        return {
-          ...state,
-          user: action.payload,
-          error: null,
-        };
-      case SIGNUP_FAILURE:
-        return {
-          ...state,
-          error: action.payload,
-        };
-      default:
-        return state;
-    }
-  };
-  
-  export default authReducer;
+  loading: false,
+  error: null,
+};
+
+export const signup = createAsyncThunk('signup/createUser', async (userData) => {
+  const response = await axios.post('http://localhost:3000/users', userData);
+  return response.data;
+});
+
+const signupSlice = createSlice({
+  name: 'signup',
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(signup.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(signup.fulfilled, (state) => {
+        state.loading = false;
+      })
+      .addCase(signup.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
+  },
+});
+
+export default signupSlice.reducer;

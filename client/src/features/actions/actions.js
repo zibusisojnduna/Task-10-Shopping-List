@@ -1,49 +1,65 @@
-import axios from "axios";
-import { act } from "react";
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
 
-export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
-export const LOGIN_FAILURE = "LOGIN_FAILURE"
-export const LOGOUT = "LOGOUT"
+export const loginSuccess = (user) => ({
+  type: LOGIN_SUCCESS,
+  payload: user,
+});
 
-export const login = (username, password) => async (dispatch) => {
-    try {
-        const response = await axios.get('http://localhost:3000/users', {
-          params: { username, password },
-        });
-        if (response.data.length > 0) {
-          dispatch({ type: LOGIN_SUCCESS, payload: response.data[0] });
+export const loginFail = () => ({
+  type: LOGIN_FAIL,
+});
+
+export const login = (username, password) => {
+  return (dispatch) => {
+    return fetch('http://localhost:3000/users')
+      .then((response) => response.json())
+      .then((data) => {
+        const user = data.find(
+          (user) => user.username === username && user.password === password
+        );
+        if (user) {
+          dispatch(loginSuccess(user));
         } else {
-          dispatch({ type: LOGIN_FAILURE, payload: 'Invalid credentials' });
+          dispatch(loginFail());
         }
-      } catch (error) {
-        dispatch({ type: LOGIN_FAILURE, payload: 'Login failed' });
-      }
-    };
+      });
+  };
+};
 
-    export const logout  = () => ({
-        type:LOGOUT
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const REGISTER_FAIL = 'REGISTER_FAIL';
+
+export const registerSuccess = (user) => ({
+  type: REGISTER_SUCCESS,
+  payload: user,
+});
+
+export const registerFail = (error) => ({
+  type: REGISTER_FAIL,
+  payload: error,
+});
+
+export const register = (username, password) => {
+  return (dispatch) => {
+    return fetch('http://localhost:3000/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, password }),
     })
-
-export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
-export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
-
-export const signup = (username, password) => async (dispatch) => {
-  try {
-    // First, check if the username already exists
-    const existingUserResponse = await axios.get('http://localhost:3000/users', {
-      params: { username },
-    });
-
-    if (existingUserResponse.data.length > 0) {
-      dispatch({ type: SIGNUP_FAILURE, payload: 'Username already exists' });
-      return;
-    }
-
-    // Create a new user
-    const newUser = { username, password };
-    const response = await axios.post('http://localhost:3000/users', newUser);
-    dispatch({ type: SIGNUP_SUCCESS, payload: response.data });
-  } catch (error) {
-    dispatch({ type: SIGNUP_FAILURE, payload: 'Sign up failed' });
-  }
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error('Registration failed');
+      })
+      .then((data) => {
+        dispatch(registerSuccess(data));
+      })
+      .catch((error) => {
+        dispatch(registerFail(error.message));
+      });
+  };
 };

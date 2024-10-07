@@ -11,7 +11,7 @@ Clone the project
 ```
 Go to the project directory
 ```bash
-  cd Shopping-List
+  cd Task-10-Shopping-List
 ```
 Install dependencies
 ```bash

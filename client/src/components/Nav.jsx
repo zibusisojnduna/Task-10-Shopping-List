@@ -1,37 +1,15 @@
 import { Link } from "react-router-dom"
+import "../assets/w3.css"
 
 function Nav(){
     return(
         
-        <ul style={{listStyleType:"none", margin:"0", padding:"0", overflow:"hidden", backgroundColor:"#a8bfe6", width:"100%"}}>
-
-            
-        <li style={{display:"block", color:"black", textAlign:"center", padding:"2%", textDecoration:"none", float:"left"}}>
-            <Link to={"/"} style={{color:"black"}}>Home</Link>
-        </li>
-
-        <li style={{display:"block", color:"black", textAlign:"center", padding:"2%", textDecoration:"none", float:"left"}}>
-            <Link to={"/shoppinglist"}style={{color:"black"}}>Shopping List</Link>
-        </li>
-
-        <li style={{display:"block", color:"black", textAlign:"center", padding:"2%", textDecoration:"none", float:"left"}}>
-            <Link to={"/privacy"} style={{color:"black"}}>Privacy</Link>
-        </li>
-
-        <li style={{display:"block", color:"black", textAlign:"center", padding:"2%", textDecoration:"none", float:"left"}}>
-            <Link to={"/NoPage"} style={{color:"black"}} >No Page</Link>
-        </li>
-
-        <li style={{display:"block", color:"black", textAlign:"center", padding:"2%", textDecoration:"none", float:"left"}}>
-            <Link to={"/login"} style={{color:"black"}}>Login</Link>
-        </li>
-
-        <li style={{display:"block", color:"black", textAlign:"center", padding:"2%", textDecoration:"none", float:"left"}}>
-            <Link to={"/signup"} style={{color:"black"}}>Sign Up</Link>
-        </li>
-
-        
-    </ul>
+        <div className="w3-bar w3-#a8bfe6">
+        <a href="" class="w3-bar-item w3-button">Home</a>
+        <a href="#" class="w3-bar-item w3-button">Shopping List</a>
+        <a href="#" class="w3-bar-item w3-button">Privacy Policy</a>
+        <a href="#" class="w3-bar-item w3-button">No Page</a>
+      </div>
     )
 }
 export default Nav

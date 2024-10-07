@@ -1,9 +1,74 @@
 {
   "users": [
     {
-      "id":1,
-      "username":"zibusiso",
-      "password":"ApexGlide10"
+      "id": 1,
+      "username": "zibusiso",
+      "password": "ApexGlide10"
+    },
+    {
+      "id": "ffa8",
+      "username": "TheLastHairbender",
+      "password": "ApexGlide11"
+    },
+    {
+      "id": "b698",
+      "username": "TheLastHairbender",
+      "password": "ApexGlide11"
+    },
+    {
+      "id": "727f",
+      "username": "TheLastHairbender",
+      "password": "ApexGlide11"
+    },
+    {
+      "id": "aef9",
+      "username": "TheLastHairbender",
+      "password": "ApexGlide11"
+    },
+    {
+      "id": "0d30",
+      "username": "TheLastHairbender",
+      "password": "ApexGlide11"
+    },
+    {
+      "id": "dd25",
+      "username": "TheLastHairbender",
+      "password": "ApexGlide11"
+    },
+    {
+      "id": "c92e",
+      "username": "TheLastHairbender",
+      "password": "ApexGlide11"
+    },
+    {
+      "id": "ac5d",
+      "username": "TheLastHairbender",
+      "password": "ApexGlide11"
+    },
+    {
+      "id": "f0e3",
+      "username": "TheLastHairbender",
+      "password": "ApexGlide11"
+    },
+    {
+      "id": "e818",
+      "username": "TheLastHairbender",
+      "password": "ApexGlide11"
+    },
+    {
+      "id": "a14a",
+      "username": "TheLastHairbender",
+      "password": "ApexGlide11"
+    },
+    {
+      "id": "4a43",
+      "username": "TheLastHairbender",
+      "password": "ApexGlide11"
+    },
+    {
+      "id": "08e9",
+      "username": "TheLastHairbender",
+      "password": "ApexGlide11"
     }
   ]
 }

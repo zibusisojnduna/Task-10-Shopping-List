@@ -26,7 +26,7 @@ function ShoppingList(){
         }
     }
 
-    const handleRemoveItem = (listName, itemName) => {
+    const handleRemoveItem = (listName, item) => {
         dispatch(removeItem({listName, item}))
     }
 
@@ -41,7 +41,7 @@ function ShoppingList(){
             <input type="text" placeholder="List Name" value={listName} onChange={(e) => setListName(e.target.value)}/>
             <button onClick={handleAddList} style={{backgroundColor:"green", color:"white", margin:"2%"}}>Add List</button>
 
-            <div>
+            <div style={{display:"flex", }}>
             {lists.map((list) => (
           <Card
             key={list.name}

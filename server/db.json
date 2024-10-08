@@ -82,5 +82,12 @@
       "username": "ZJNudna",
       "password": "ApexGlide10"
     }
+  ],
+  "shopping-list":[
+    {
+      "id":"1",
+      "name":"My List",
+      "items":[]
+    }
   ]
 }

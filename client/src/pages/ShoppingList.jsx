@@ -38,10 +38,10 @@ function ShoppingList(){
     return(
         <div style={{textAlign:"center"}}>
             <h2>Shopping List</h2>
-            <input type="text" placeholder="List Name" value={listName} onChange={(e) => setListName(e.target.value)}/>
+            <input type="text" placeholder="List name" value={listName} onChange={(e) => setListName(e.target.value)}/>
             <button onClick={handleAddList} style={{backgroundColor:"green", color:"white", margin:"2%"}}>Add List</button>
 
-            <div style={{display:"flex", }}>
+            <div style={{display:"flex", flexWrap:"wrap" }}>
             {lists.map((list) => (
           <Card
             key={list.name}

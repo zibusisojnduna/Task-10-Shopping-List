@@ -1,41 +1,35 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
+const initialState = {
+  lists: [],
+};
 
-const shoppingListSlice =  createSlice({
-    name:"shoppin list",
-    initialState: {
-        items: [],
+const shoppingListSlice = createSlice({
+  name: 'shoppingList',
+  initialState,
+  reducers: {
+    addList(state, action) {
+      state.lists.push({ name: action.payload, items: [] });
     },
-     reducers:{
-        addItem(state, action) {
-            state.items.push({...action.payload, quantity:1})
-        },
-        removeItem(state, action) {
-            state.items = state.items.filter(item => item.id !== action.payload)
-        },
-        updateItem(state, action) {
-            const { id, name, quantity } = action.payload
-            const existingItem = state.items.find(item => item.id === id)
-            if (existingItem) {
-                existingItem.name = name
-                existingItem.quantity = quantity 
-            }
+    addItem(state, action) {
+      const { listName, item } = action.payload;
+      const list = state.lists.find((l) => l.name === listName);
+      if (list) {
+        list.items.push(item);
+      }
+    },
+    removeItem(state, action) {
+      const { listName, item } = action.payload;
+      const list = state.lists.find((l) => l.name === listName);
+      if (list) {
+        list.items = list.items.filter((i) => i !== item);
+      }
+    },
+    removeList(state, action) {
+      state.lists = state.lists.filter((l) => l.name !== action.payload);
+    },
+  },
+});
 
-        },
-        increseQuantity(state, action) {
-            const item = state.items.find(item => item.id === action.payload)
-            if (item) {
-                item.quantity += 1;
-            }
-        },
-        decreaseQuantity(state, action) {
-            const item = state.items.find(item => item.id === action.payload)
-            if(item && item.quantity > 1){
-                item.quantity -= 1;
-            }
-        }
-     }
-})
-export const { addItem, removeItem, updateItem, increseQuantity, decreaseQuantity} = shoppingListSlice.actions
-
-export default shoppingListSlice.reducer
+export const { addList, addItem, removeItem, removeList } = shoppingListSlice.actions;
+export default shoppingListSlice.reducer;

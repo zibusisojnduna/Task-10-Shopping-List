@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 function Landing(){
     return(
-        <section style={{display:"flex" }}>
+        <section style={{display:"flex", textAlign:"center" }}>
             <div style={{alignItems:"center", justifyContent:"center", textAlign:"center"}}>
                 <h1>
                     Welcome to ListIt. Need to get things done, ListIt!

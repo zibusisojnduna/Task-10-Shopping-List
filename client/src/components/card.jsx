@@ -1,18 +1,29 @@
-function Card({item, onEdit, onRemove, onIncrease, onDecrease}){
+import "../assets/w3.css"
+
+function Card({list, onRemoveList, onAddItem, onRemoveItem, itemName, setItemName}){
 return(
-    <div style={{border:"2% solid", borderRadius:"10%", padding:"2%", margin:"2%", boxShadow:"2% 2% 0 rgba()", display:"flex", justifyContent:"space-between", alignItems:"center"}}>
-        <h3>{item.name}</h3>
-        <div style={{display:"flex"}}>
+    <div className="w3-card-4">
+        <header className="w3-container" style={{backgroundColor:"#86fde8"}}>
+            <h3>{list.name}</h3>
+            <button onClick={() => onRemoveList(list.name)} style={{backgroundColor:'red', color:'white', margin:"2%"}}>Remove List</button>
+        </header>
 
-            <div style={{display:'flex'}}>
-                <button onClick={() => onDecrease(item.id)} style={{backgroundColor:"#acb6e5", margin:"1%"}}>-</button>
-                <span>{item.quantity}</span>
-                <button onClick={() => onIncrease(item.id)} style={{backgroundColor:"#acb6e5", margin:"1%"}}>+</button>
-            </div>
+        <div className="w3-container">
+            <input type="text" placeholder="Add item" value={itemName} onChange={(e) => setItemName(e.target.value)}></input>
+            <button onClick={onAddItem} style={{backgroundColor:"green", color:"white", margin:"2%"}}>Add Item</button>
 
-            <button onClick={() => onEdit(item)} style={{backgroundColor:"green", color:"white", margin:"2%"}}>Edit</button>
-            <button onClick={() => onRemove(item.id)} style={{backgroundColor:"red", color:"white", margin:"2%"}}>Remove</button>
+            <ul>
+                {list.items.map((item, index) => (
+                    <li key={index}>
+                        {item}
+                        <button onClick={() => onRemoveItem(item)} style={{backgroundColor:"red", color:"white", margin:"2%"}}>Remove</button>
+                    </li>
+                ))}
+            </ul>
         </div>
+
+
+
     </div>
     )
 }
